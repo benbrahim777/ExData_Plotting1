@@ -1,5 +1,7 @@
 
 
+
+
 # Function to retrieve data from file
 load_myData <- function() {
 
@@ -25,8 +27,6 @@ url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_co
 localZippedfileName    <- "./household_power_consumption.zip"
 download.file(url, localZippedfileName ) 
 unzip(localZippedfileName, exdir = ".")
-#dateDownloaded <- date() ################
-#dateDownloaded ###################
 
 # Read file in a datatable
 myData <- fread(fileName, header=TRUE, sep=";", colClasses="character",  na="?")
