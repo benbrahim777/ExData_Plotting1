@@ -33,13 +33,13 @@ par(mar = c(MarginBottom, MarginLeft, MarginTop, MarginRight))
 
 
 # Graphic Plot
-plot(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Sub_metering_1, col = PlotColsColor,
+plot(myData_TwoDaysPeriod$Date_Time, myData_TwoDaysPeriod$Sub_metering_1, col = PlotColsColor,
      type="l",
      xlab=PlotXLabel,
      ylab=PlotYLabel)
 
-lines(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Sub_metering_2, col=PlotLinesColor)
-lines(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Sub_metering_3, col=PlotLinesColor2)
+lines(myData_TwoDaysPeriod$Date_Time, myData_TwoDaysPeriod$Sub_metering_2, col=PlotLinesColor)
+lines(myData_TwoDaysPeriod$Date_Time, myData_TwoDaysPeriod$Sub_metering_3, col=PlotLinesColor2)
 legend("topright",col=c("black", "red", "blue"), c("Sub_metering_1", 
                  "Sub_metering_2", "Sub_metering_3"), lty=1)
 

@@ -31,7 +31,7 @@ png(filename = PlotFileName , width = PlotWidth, height = PlotHeight, units = Pl
 par(mar = c(MarginBottom, MarginLeft, MarginTop, MarginRight))
 
 # Graphic Plot
-plot(myData_TwoDaysPeriod$DateTime, myData_TwoDaysPeriod$Global_active_power,
+plot(myData_TwoDaysPeriod$Date_Time, myData_TwoDaysPeriod$Global_active_power,
      type="l",
      xlab=PlotXLabel,
      ylab=PlotYLabel)

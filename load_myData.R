@@ -13,21 +13,30 @@ FormatDateTime    <- "%Y-%m-%d %H:%M:%S"
 StartNumericalCol <- 3
 EndNumericalCol   <- 9
 
-
+fileName = "household_power_consumption.txt"
 
 # loading datatable library
 library(data.table)
-file    <- "./household_power_consumption.txt"
+
+
+# Get and unzip File from web Url
+
+url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+localZippedfileName    <- "./household_power_consumption.zip"
+download.file(url, localZippedfileName ) 
+unzip(localZippedfileName, exdir = ".")
+#dateDownloaded <- date() ################
+#dateDownloaded ###################
 
 # Read file in a datatable
-myData <- fread(file, header=TRUE, sep=";", colClasses="character",  na="?")
+myData <- fread(fileName, header=TRUE, sep=";", colClasses="character",  na="?")
 
 # format dates
 myData$Date <- as.Date(myData$Date, format=FormatDate)
 
-# Get data of two days
-myData_TwoDaysPeriod <-  myData[myData$Date >= StartDate & myData$Date <= EndDate]
-myData_TwoDaysPeriod <- data.frame(myData_TwoDaysPeriod)
+# Get data of two days in a dataFrame
+myData_TwoDaysPeriod <-   myData[myData$Date >= StartDate & myData$Date <= EndDate]
+myData_TwoDaysPeriod <-   data.frame(myData_TwoDaysPeriod)
 
 
 # Convert some columns to numeric format
@@ -36,9 +45,9 @@ for(col in c(StartNumericalCol:StartNumericalCol)) {
 }
 
 
-# Format DateTime
-myData_TwoDaysPeriod$DateTime <- paste(myData_TwoDaysPeriod$Date, myData_TwoDaysPeriod$Time)
-myData_TwoDaysPeriod$DateTime <- strptime(myData_TwoDaysPeriod$DateTime, format = FormatDateTime)
+# Create and Format DateTime column
+myData_TwoDaysPeriod$Date_Time <- paste(myData_TwoDaysPeriod$Date, myData_TwoDaysPeriod$Time)
+myData_TwoDaysPeriod$Date_Time <- strptime(myData_TwoDaysPeriod$Date_Time, format = FormatDateTime)
 
 # return data
 return (myData_TwoDaysPeriod)
