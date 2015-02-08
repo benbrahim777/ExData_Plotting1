@@ -19,6 +19,8 @@ MarginRight       <- 6
 
 
 
+
+
 PlotColsColor     <- "red"
 PlotTitle         <- "Global Active Power"
 PlotXLabel        <- "Global Active Power(kilowatts)"
